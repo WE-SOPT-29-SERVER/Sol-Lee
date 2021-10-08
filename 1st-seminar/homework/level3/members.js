@@ -207,8 +207,6 @@ if (members.lenth % maxTeamNum != 0) teamTotalNum++;
 
 let team_array = new Array(teamTotalNum);
 
-console.log(team_array);
-
 //ob 먼저 넣고, yb 넣기
 for (i = 0; i < ob_members.length; i++) {
     team_array[i % teamTotalNum] += (ob_members[i].name)

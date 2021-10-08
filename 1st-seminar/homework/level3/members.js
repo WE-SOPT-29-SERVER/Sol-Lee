@@ -186,3 +186,28 @@ const members = [{
 ];
 
 console.log(members.length);
+
+//shuffle 함수 구현
+function shuffle(array) {
+    array.sort(() => Math.random() - 0.5);
+}
+
+//yb,ob 나눠서 배열에 저장
+let ob_members = members.filter((member) => member.group == "OB")
+let yb_members = members.filter((member) => members.group == "YB")
+console.log(ob_members);
+
+//배열 각각 shuffle
+shuffle(ob_members);
+shuffle(yb_members);
+
+console.log(ob_members);
+
+//조 배열 생성
+let maxTeamNum = 4; //조 최대명수 : 4
+const teamTotalNum = members.length / maxTeamNum;
+if (members.lenth % maxTeamNum != 0) teamTotalNum++;
+
+let team_array = [][]
+//ob 먼저 넣기
+for ()

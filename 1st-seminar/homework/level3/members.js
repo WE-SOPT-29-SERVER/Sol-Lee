@@ -185,8 +185,6 @@ const members = [{
     },
 ];
 
-console.log(members.length);
-
 //shuffle 함수 구현
 function shuffle(array) {
     array.sort(() => Math.random() - 0.5);
@@ -194,20 +192,35 @@ function shuffle(array) {
 
 //yb,ob 나눠서 배열에 저장
 let ob_members = members.filter((member) => member.group == "OB")
-let yb_members = members.filter((member) => members.group == "YB")
-console.log(ob_members);
+let yb_members = members.filter((member) => member.group == "YB")
 
 //배열 각각 shuffle
 shuffle(ob_members);
 shuffle(yb_members);
 
-console.log(ob_members);
+//console.log(ob_members);
 
 //조 배열 생성
-let maxTeamNum = 4; //조 최대명수 : 4
-const teamTotalNum = members.length / maxTeamNum;
+const maxTeamNum = 4; //조 최대명수 : 4
+let teamTotalNum = Math.floor(members.length / maxTeamNum); //조 개수
 if (members.lenth % maxTeamNum != 0) teamTotalNum++;
 
-let team_array = [][]
-//ob 먼저 넣기
-for ()
+let team_array = new Array(teamTotalNum);
+
+console.log(team_array);
+
+//ob 먼저 넣고, yb 넣기
+for (i = 0; i < ob_members.length; i++) {
+    team_array[i % teamTotalNum] += (ob_members[i].name)
+    team_array[i % teamTotalNum] += " "
+}
+
+for (i = 0; i < yb_members.length; i++) {
+    team_array[i % teamTotalNum] += (yb_members[i].name)
+    team_array[i % teamTotalNum] += " "
+}
+
+//각 조 출력
+for (i = 0; i < teamTotalNum; i++) {
+    console.log(`${i+1}조 : ${team_array[i]}`)
+}

@@ -1,14 +1,26 @@
-module.functionexports={
-function add(a, b) {
+//module.exports={
+// add,
+// substract,
+// multiply,
+// divide
+// };
+
+const add = (a, b) => {
   return a + b;
-}
-function subtract(a, b) {
+};
+const subtract = (a, b) => {
   return a - b;
-}
-function multiply(a, b) {
+};
+const multiply = (a, b) => {
   return a * b;
-}
-function divide(a, b) {
+};
+const divide = (a, b) => {
   return a / b;
-}
+};
+
+module.exports = {
+  add,
+  subtract,
+  multiply,
+  divide,
 };

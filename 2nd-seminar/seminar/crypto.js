@@ -19,6 +19,7 @@ const base64 = crypto.createHash("sha512").update(password).digest("base64");
 // console.log("hex:", hex);
 // console.log("\n");
 // console.log("base64:", base64);
+// console.log("Test", password);
 
 const salt = "QxLUF1bglAdeQXbv5PehSMfV11CdYYLmfY6lehjZMQ";
 const iterations = 100000;

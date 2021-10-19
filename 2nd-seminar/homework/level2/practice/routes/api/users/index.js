@@ -1,51 +1,48 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const members = require('./../users/dummyData'); //dummyData 사용
-router.get("/", (req, res) => {
-    const result = {
-        status: 200,
-        message: "userPage에 접근합니다",
-    };
-    res.status(200).send(result);
+
+router.get('/', (req, res) => {
+  const result = {
+    status: 200,
+    message: 'userPage에 접근합니다',
+  };
+  res.status(200).send(result);
 });
 
-router.post("/login", (req, res) => {
-    const id = req.body.id;
-    const password = req.body.password;
-    let result;
-    //id check logic(추후 수정-db)
-    //pw check logic(추후 수정-db)
-    if (password.length() < 8) {
-        result = {
-            status: 404,
-            message: "비밀번호는 8자리 이상으로 입력해주세요"
-        }
-    } else {
-        result = {
-            status: 200,
-            message: `로그인 성공! ${id}님 환영합니다.`
-        }
-    }
-
-})
-
-router.post("/signup", (req, res) => {
-    //id check logic(추후 수정)
-    //pw check logic
-    if (password.length() < 8) {
-        result = {
-            status: 400,
-            message: "비밀번호는 8자리 이상으로 입력해주세요"
-        }
-    } else {
-        result = {
-            status: 200,
-            message: `회원가입 성공! ${id}님 환영합니다.`
-        }
-
-    }
+router.post('/login', (req, res) => {
+  const id = req.body.id;
+  const password = req.body.password;
+  if (id) {
+    const result = {
+      status: 200,
+      message: `${id}님이 로그인을 하셨습니다.`,
+    };
     res.status(200).send(result);
-    res.status(400).send(result);
-})
+  } else {
+    const err = {
+      status: 400,
+      message: '로그인에 실패하셨습니다.',
+    };
+    res.status(400).send(err);
+  }
+});
+
+router.post('/signup', (req, res) => {
+  const id = req.body.id;
+  const password = req.body.password;
+  if (id) {
+    const result = {
+      status: 200,
+      message: `${id}님 환영합니다.`,
+    };
+    res.status(200).send(result);
+  } else {
+    const err = {
+      status: 400,
+      message: '회원가입에 실패하셨습니다.',
+    };
+    res.status(400).send(err);
+  }
+});
 
 module.exports = router;

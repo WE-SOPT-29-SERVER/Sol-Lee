@@ -1,8 +1,8 @@
 const express = require("express");
-const responseMessage = require("../../../../constants/responseMessage");
-const statusCode = require("../../../../constants/statusCode");
-const users = require("../dbMockup/user");
-const util = require("../lib/util");
+const responseMessage = require("../../constants/responseMessage");
+const statusCode = require("../../constants/statusCode");
+const users = require("../../dbMockup/user");
+const util = require("../../lib/util");
 const router = express.Router();
 
 /*
@@ -30,8 +30,8 @@ router.post('/signup', (req, res) => {
     }
 
     //해당 email을 가진 유저가 이미 있을 경우 Already Email 반환
-    const alreadyUser = users.filter(user => user.email === email).length > 0;
-    if (alreadyUser) {
+    const user = users.filter(user => user.email === email).length > 0;
+    if (user) {
         return res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, responseMessage.ALREADY_EMAIL));
     }
 
@@ -44,12 +44,7 @@ router.post('/signup', (req, res) => {
 
     users.push(newUser);
 
-    res.status(200).send(util.success(statusCode.OK, responseMessage.CREATED_USER, newUser));
+    res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.CREATED_USER, newUser));
 });
-
-//  /user/login
-
-
-
 
 module.exports = router;

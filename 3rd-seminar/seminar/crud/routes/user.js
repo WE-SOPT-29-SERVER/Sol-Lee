@@ -10,8 +10,13 @@ RESPONSE STATUS:200(OK)
 RESPONSE DATA :All User Data
 */
 
+// /user/signup
 router.post('/signup', (req, res) => {
 
 });
+
+//  /user/login
+
+
 
 module.exports = router;

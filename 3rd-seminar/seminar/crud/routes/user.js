@@ -1,5 +1,8 @@
 const express = require("express");
+const responseMessage = require("../../../../constants/responseMessage");
+const statusCode = require("../../../../constants/statusCode");
 const users = require("../dbMockup/user");
+const util = require("../lib/util");
 const router = express.Router();
 
 /*
@@ -22,19 +25,14 @@ router.post('/signup', (req, res) => {
     } = req.body;
     //request data 확인 - 세 개중 하나라도 없다면 Bad Request 반환
     if (!name || !password || !email) {
-        return res.status(400).send({
-            status: 400,
-            message: "BAD REQUEST"
-        });
+        return res
+            .status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, responseMessage.NULL_VALUE));
     }
 
     //해당 email을 가진 유저가 이미 있을 경우 Already Email 반환
     const alreadyUser = users.filter(user => user.email === email).length > 0;
     if (alreadyUser) {
-        return res.status(409).send({
-            status: 409,
-            message: "ALREADY EMAIL"
-        });
+        return res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, responseMessage.ALREADY_EMAIL));
     }
 
     const newUser = {
@@ -46,11 +44,7 @@ router.post('/signup', (req, res) => {
 
     users.push(newUser);
 
-    res.status(200).send({
-        status: 200,
-        message: "success",
-        data: newUser
-    });
+    res.status(200).send(util.success(statusCode.OK, responseMessage.CREATED_USER, newUser));
 });
 
 //  /user/login

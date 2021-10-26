@@ -16,7 +16,7 @@ RESPONSE DATA :비밀번호를 제외한  User정보
 //  /user/login
 router.get("/profile/:id", async (req, res) => {
     //req params에서 데이터 가져오기
-    const id = parseInt(req.params.id);
+    const id = Number(req.params.id);
     //존재하는 아이디인지 확인 - 없다면 No user 반환
     const user = users.filter(user => user.id === id)[0];
 

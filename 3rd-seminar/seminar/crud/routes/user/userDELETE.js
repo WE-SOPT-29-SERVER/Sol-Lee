@@ -6,16 +6,15 @@ const util = require("../../lib/util");
 const router = express.Router();
 
 /*
-update user
-METHOD : PUT
+delete user
+METHOD : DELETE
 URI : localhost:3000/user/:id
-REQUEST DATA :newName
 RESPONSE STATUS :200(OK)
-RESPONSE DATA: 수정된 유저 정보
+RESPONSE DATA: 전체 유저 정보
 */
 
 //  /user/:id
-router.put("/:id", async (req, res) => {
+router.delete("/:id", async (req, res) => {
     const {
         id
     } = req.params;
@@ -23,7 +22,7 @@ router.put("/:id", async (req, res) => {
         newName
     } = req.body;
 
-    if (!id || !newName) {
+    if (!id) {
         return res.status(statusCode.BAD_REQUEST)
             .send(
                 util.fail(statusCode.BAD_REQUEST, responseMessage.NULL_VALUE),
@@ -38,13 +37,10 @@ router.put("/:id", async (req, res) => {
             .send(util.fail(statusCode.BAD_REQUEST, responseMessage.NO_USER));
     }
 
-    const updateUser = {
-        ...existingUser,
-        name: newName
-    }; //비구조화 할당/구조분해 할당 : 명시적으로 할당되지 않은 나머지들 설정 가능(기존 내용을 같게 쓰고, 이름만 붙인다)
+    const newUsers = users.filter(user => user.id !== Number(id));
 
     res.status(statusCode.OK).send(
-        util.success(statusCode.OK, responseMessage.USER_UPDATE_SUCCESS, updateUser, ),
+        util.success(statusCode.OK, responseMessage.USER_DELETE_SUCCESS, newUsers, ),
     )
 })
 

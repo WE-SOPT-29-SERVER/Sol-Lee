@@ -9,23 +9,25 @@ const router = express.Router();
 /*
 post a post
 METHOD : POST
-URI : localhost:3000/api/post/:id
+URI : localhost:3000/api/post
 RESPONSE STATUS :200(OK)
 RESPONSE DATA : 특정 게시글
 */
 
 //  /post
-router.get("/:id", async (req, res) => {
+router.post("/", async (req, res) => {
 
     try {
-        const
-            postId = req.params.id;
-        const result = posts.filter(post => {
-            return post.id == postId
-        })
-
+        const {
+            title,
+            contents
+        } = req.body;
+        const post = {
+            title: title,
+            contents: contents
+        }
         //성공 
-        res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.LOGIN_SUCCESS, result[0]));
+        res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.LOGIN_SUCCESS, post));
     } catch (error) {
         console.log(error)
     }

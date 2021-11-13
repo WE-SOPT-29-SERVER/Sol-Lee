@@ -28,7 +28,7 @@ router.get("/", async (req, res) => {
         console.log(resultList)
 
         //성공 
-        res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.LOGIN_SUCCESS, {
+        res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.POST_GET_ALL_SUCCESS, {
             result
         }));
     } catch (error) {

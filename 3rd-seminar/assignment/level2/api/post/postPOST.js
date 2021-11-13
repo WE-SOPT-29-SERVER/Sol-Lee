@@ -27,7 +27,7 @@ router.post("/", async (req, res) => {
             contents: contents
         }
         //성공 
-        res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.LOGIN_SUCCESS, post));
+        res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.POST_CREATE_SUCCESS, post));
     } catch (error) {
         console.log(error)
     }

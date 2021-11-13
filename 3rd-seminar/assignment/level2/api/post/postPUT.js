@@ -35,7 +35,7 @@ router.put("/:id", async (req, res) => {
     if (!existingPost) {
         return res
             .status(statusCode.BAD_REQUEST)
-            .send(util.fail(statusCode.BAD_REQUEST, responseMessage.NO_USER));
+            .send(util.fail(statusCode.BAD_REQUEST, responseMessage.NO_POST));
     }
 
     const updatePost = {
@@ -44,7 +44,7 @@ router.put("/:id", async (req, res) => {
         contents: newContents
     };
     res.status(statusCode.OK).send(
-        util.success(statusCode.OK, responseMessage.USER_UPDATE_SUCCESS, updatePost, ),
+        util.success(statusCode.OK, responseMessage.POST_UPDATE_SUCCESS, updatePost, ),
     )
 })
 

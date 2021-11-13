@@ -15,4 +15,12 @@ module.exports = {
 
     // 프로필 조회
     READ_PROFILE_SUCCESS: "프로필 조회 성공",
+    USER_DELETE_SUCCESS: "프로필 삭제 성공",
+    USER_UPDATE_SUCCESS: "프로필 수정 성공",
+    //게시글
+    NO_POST: "해당 글이 없습니다.",
+    POST_UPDATE_SUCCESS: "글 수정 성공",
+    POST_CREATE_SUCCESS: "글 작성 성공",
+    POST_GET_ALL_SUCCESS: "모든 글 조회 성공",
+    POST_GET_SUCCESS: "글 조회 성공"
 };

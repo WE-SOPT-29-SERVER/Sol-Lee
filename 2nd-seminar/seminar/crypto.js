@@ -14,9 +14,9 @@ const crypto = require("crypto");
 //pbkdf2 방식
 let password = "qwerty";
 const hex = crypto.createHash("sha512").update(password).digest("hex");
-console.log(password);
+// console.log(password);
 const base64 = crypto.createHash("sha512").update(password).digest("base64");
-console.log(password);
+// console.log(password);
 // console.log("hex:", hex);
 // console.log("\n");
 // console.log("base64:", base64);

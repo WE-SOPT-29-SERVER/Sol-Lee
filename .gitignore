@@ -1,0 +1,11 @@
+#Output of 'npm pack'
+*.tgz
+
+#Yarn Integrity file'
+.yarn-integrity
+
+#dotenv environment variables file
+.env
+
+#Firebase service account
+wesopt29-b36aa-firebase-adminsdk-5slhh-949728670f.json

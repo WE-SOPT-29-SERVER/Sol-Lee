@@ -1,12 +1,16 @@
 - resize-image
 기본 이미지
+![_110112424_69710754_161925558288469_8334116781389881351_n](https://user-images.githubusercontent.com/76844556/147358216-d35d30d7-09fa-4688-84da-e6f5e5fb39c0.jpeg)
 
 포스트맨으로 사진 전송
+<img width="844" alt="KakaoTalk_Photo_2021-12-24-23-11-32" src="https://user-images.githubusercontent.com/76844556/147358268-c8a94d93-713a-4070-93ff-b4be115016cf.png">
+
 
 storage에 사진이 두개 저장(원본, 리사이징 후 이미지)
+<img width="829" alt="KakaoTalk_Photo_2021-12-24-23-11-28" src="https://user-images.githubusercontent.com/76844556/147358265-494c13b6-21b1-4ccb-a109-3dc30e320e46.png">
 
 리사이징 후 이미지
-
+<img width="830" alt="KakaoTalk_Photo_2021-12-24-23-11-23" src="https://user-images.githubusercontent.com/76844556/147358238-831c9bf2-5be8-422c-9482-075fd83ed64d.png">
 
 - jwt : refresh token
 

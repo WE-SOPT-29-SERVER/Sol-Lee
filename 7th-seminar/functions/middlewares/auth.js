@@ -19,8 +19,7 @@ const checkUser = async (req, res, next) => {
     //4. access && refresh 유효 -> 다음 미들 웨어
     const { refreshtoken } = req.headers;
     const token = req.headers.accesstoken;
-    console.log(refreshtoken, token);
-    // console.log('a', authHeader, 'auth');
+
     if (!req.headers) return res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, responseMessage.NO_AUTH_HEADER));
     // const token = authHeader.substring(7, authHeader.length);
     if (!token || !refreshtoken) return res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, responseMessage.TOKEN_EMPTY));
@@ -41,7 +40,7 @@ const checkUser = async (req, res, next) => {
         user = await userDB.getUserById(client, userId);
       }
     }
-    //#3 refresh 재발급
+    //#3 refresh 재발급 && #4 -> 로직 동일
     // else if (decodedRefreshToken === TOKEN_EXPIRED) {
     const userId = decodedToken.id;
     if (!userId) return res.status(statusCode.UNAUTHORIZED).send(util.fail(statusCode.UNAUTHORIZED, responseMessage.TOKEN_INVALID));

@@ -46,9 +46,9 @@ module.exports = async (req, res) => {
 
     const user = await userDB.getUserByIdFirebase(client, idFirebase);
 
-    const { accesstoken } = jwtHandlers.sign(user);
+    const { accesstoken, refreshToken } = jwtHandlers.sign(user);
 
-    res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.LOGIN_SUCCESS, { user, accesstoken }));
+    res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.LOGIN_SUCCESS, { user, accesstoken, refreshToken }));
   } catch (error) {
     console.log(error);
 

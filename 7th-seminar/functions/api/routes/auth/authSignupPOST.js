@@ -42,11 +42,10 @@ module.exports = async (req, res) => {
     const idFirebase = userFirebase.uid;
 
     const user = await userDB.addUser(client, email, name, phone, idFirebase);
-    const { accesstoken } = jwtHandlers.sign(user);
-
+    const { accesstoken, refreshToken } = jwtHandlers.sign(user);
     console.log(user);
 
-    res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.CREATED_USER, { user, accesstoken }));
+    res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.CREATED_USER, { user, accesstoken, refreshToken }));
   } catch (error) {
     console.log(error);
 

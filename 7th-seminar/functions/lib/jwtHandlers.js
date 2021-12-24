@@ -7,7 +7,13 @@ const options = {
   expiresIn: '30d',
   issuer: 'wesopt',
 };
+const refreshOptions = {
+  algorithm: 'HS256',
+  expiresIn: '60d',
+  issuer: 'wesopt',
+};
 
+//accessToken 발급
 const sign = (user) => {
   const payload = {
     id: user.id,
@@ -18,10 +24,29 @@ const sign = (user) => {
 
   const result = {
     accesstoken: jwt.sign(payload, secretKey, options),
-    // refreshToken: jwt.sign(payload, secretKey, refreshOptions),
+    refreshToken: jwt.sign(payload, secretKey, refreshOptions),
   };
   return result;
 };
+
+//refreshToken 발급
+const genRefreshToken = (user) => {
+  const payload = {
+    id: user.id,
+    email: user.email,
+    name: user.name || null,
+    idFirebase: user.idFirebase,
+  };
+
+  const result = {
+    refreshToken: jwt.sign(payload, secretKey, refreshOptions),
+  };
+  return result;
+};
+//access && refresh 만료 -> error
+//access 만료 && refresh 유효 -> access 재발급
+//access 유효 && refresh 만료 -> refresh 재발급
+//access && refresh 유효 -> 다음 미들 웨어
 const verify = (token) => {
   let decoded;
   try {
@@ -45,4 +70,5 @@ const verify = (token) => {
 module.exports = {
   sign,
   verify,
+  genRefreshToken,
 };
